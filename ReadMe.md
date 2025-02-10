@@ -66,7 +66,42 @@ This project is a decentralized healthcare management system that ensures patien
 |         Frontend (React + Tailwind)      |
 +------------------------------------------+
 ```
+## State Variables
+```
++-----------------------+---------------------+------------------------------------------+
+|      Variable         |        Type         |              Description                 |
++-----------------------+---------------------+------------------------------------------+
+| patientRecords        | mapping(address =>  | Stores encrypted IPFS CIDs for patient   |
+|                       | string)             | medical records                          |
++-----------------------+---------------------+------------------------------------------+
+| accessPermissions     | mapping(address =>  | Tracks provider access permissions for   |
+|                       | address)            | patient records                          |
++-----------------------+---------------------+------------------------------------------+
+| consentRecords        | mapping(address =>  | Stores granular consent details such as  |
+|                       | struct)             | time-based or purpose-based access       |
++-----------------------+---------------------+------------------------------------------+
+| auditLogs             | event               | Emits events for access requests &       |
+|                       |                     | approvals for transparency               |
++-----------------------+---------------------+------------------------------------------+
+| owner                 | address             | Stores contract owner/admin address      |
++-----------------------+---------------------+------------------------------------------+
+| verifierKeys          | mapping(address =>  | Stores public keys for ZK-SNARK          |
+|                       | bytes32)            | proof verification                       |
++-----------------------+---------------------+------------------------------------------+
+| userDIDs              | mapping(address =>  | Stores Decentralized Identifiers (DID)   |
+|                       | string)             | for users                                |
++-----------------------+---------------------+------------------------------------------+
+| encryptionKeys        | mapping(address =>  | Stores encryption keys for secure data   |
+|                       | bytes32)            | access                                   |
++-----------------------+---------------------+------------------------------------------+
+| requestTimestamps     | mapping(address =>  | Logs timestamps of access requests to    |
+|                       | uint256)            | enforce time-limited permissions         |
++-----------------------+---------------------+------------------------------------------+
+| zkProofs              | mapping(bytes32 =>  | Stores ZK-SNARK proofs for verifying     |
+|                       | bool)               | claims without revealing full records    |
++-----------------------+---------------------+------------------------------------------+
 
+```
 ## Installation & Setup
 ### Prerequisites
 - Node.js & npm
